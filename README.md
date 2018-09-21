@@ -2,7 +2,7 @@
 Utilizando o algoritmo K-means para analisar grupos de Irís (também chamadas de Lírios) com as libs Scikit e NumPy.
 
 ## Introdução
-Utilizando um data set de 150 iris, sendo as mesmas dividídas em 3 tipos diferentes (), o objetivo era utilizar o algoritmo de aprendizado não supervisionado K-Means com apenas duas das quatro caracteristicas passadas.
+Utilizando um data set de 150 iris, sendo as mesmas dividídas em 3 tipos diferentes (Setosa, Versicolor e Virginica), o objetivo era utilizar o algoritmo de aprendizado não supervisionado K-Means com apenas duas das quatro caracteristicas passadas.
 
 ## Metodologia
 A lib que está sendo utilizada é a [Scikit-learn](http://scikit-learn.org/), projeto concreto e bem formalizado, criado em 2007 e que possui grande comunidade envolvida.
@@ -22,6 +22,13 @@ Ao final, são gerado 3 gráficos referentes a cada uma das execuções, mostran
 ![Terceiro Gráfico](img/graficoTerceiro.png)
 
 Cada gráfico é interativo, então é possivel dar zoom nas regiões e movimentá-lo da maneira como preferir.
+
+## Parâmetros de avaliação
+As 50 primeiras flores fazem parte do mesmo tipo e assim sucessivamente, encerrando em três grupos distintos. Para cada ponto, o algoritmo retorna um número referente a cor do grupo que ele pertence.
+
+Como o mesmo não retorna as mesmas cores para o grupo 1, 2 e 3 em todas as suas execuções, avaliamos o maior valor de cada agrupamento já que está ordenado. Somando os maiores valores de cada grupo, temos o total de acertos naquela execução.
+
+Vide função *avaliacaoAcertos* para mais exclarecimentos.
 
 ## Considerações Finais
 O código fonte está sendo distribuído sobre a licença MIT, então sinta-se livre para utilizar. Para executar o fonte acima, instale o Python 3 em sua máquina, clone o [repositório](https://github.com/Katreque/trab-means), instale as libs necessárias (scikit-learn, numpye matplotlib) e use o comando 'Python main.py'.
