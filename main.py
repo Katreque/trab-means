@@ -41,7 +41,7 @@ def avaliacaoAcertos(arrayAnalise):
 
         if (i == 49) or (i == 99) or (i == 149):
             print("Agrupamento:", g1, g2, g3)
-            acertos += max(g1, g2, g3) - (min(g1, g2) + min(g2, g3))
+            acertos += max(g1, g2, g3)
             g1 = 0
             g2 = 0
             g3 = 0
