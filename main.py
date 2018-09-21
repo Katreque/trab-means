@@ -5,6 +5,7 @@ import csv
 import matplotlib.pyplot as plt
 
 matriz = []
+arrayCriacaoCentroides = []
 
 with open('dataset_iris.csv') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -18,6 +19,8 @@ matriz = np.array(matriz)
 def criacaoCentroideRandom():
     array = [[randint(0, 9), randint(0, 9)], [randint(0, 9), randint(0, 9)], [randint(0, 9), randint(0, 9)]]
     array = np.array(array)
+    global arrayCriacaoCentroides
+    arrayCriacaoCentroides = array
     return array
 
 def avaliacaoAcertos(arrayAnalise):
@@ -55,10 +58,18 @@ for i in range(1, 4):
 
     plt.figure(i)
     plt.scatter(matriz[:, 0], matriz[:, 1], s = 100, c = trabmeans.labels_)
-    plt.scatter(trabmeans.cluster_centers_[:, 0], trabmeans.cluster_centers_[:, 1], s = 100, c = 'red', label = 'Centroides')
+    if (i != 3):
+        plt.scatter(arrayCriacaoCentroides[:, 0], arrayCriacaoCentroides[:, 1], s = 100, c = 'green', label = 'Centroides Iniciais')
+    plt.scatter(trabmeans.cluster_centers_[:, 0], trabmeans.cluster_centers_[:, 1], s = 100, c = 'red', label = 'Centroides Finais')
     plt.xlabel('Largura da Petala')
     plt.ylabel('Comprimento da Sepala')
     plt.legend()
+
+    if (i != 3):
+        print("Centroide inicial - Grupo " + str(i) + ":", arrayCriacaoCentroides[0], arrayCriacaoCentroides[1], arrayCriacaoCentroides[2])
+    else:
+        print("Coordenadas do Centroide geradas de maneira otimizada pelo algoritmo.")
+
     print("Porcentagem acerto - Grupo " + str(i) + ":", avaliacaoAcertos(trabmeans.labels_))
     print("\n")
 
